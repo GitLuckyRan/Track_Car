@@ -1,0 +1,12 @@
+track_car\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/list.c
+track_car\list.o: C:\Keil5_MDK\ARM\ARMCC\Bin\..\include\stdlib.h
+track_car\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+track_car\list.o: C:\Keil5_MDK\ARM\ARMCC\Bin\..\include\stddef.h
+track_car\list.o: C:\Keil5_MDK\ARM\ARMCC\Bin\..\include\stdint.h
+track_car\list.o: ../Core/Inc/FreeRTOSConfig.h
+track_car\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+track_car\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+track_car\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+track_car\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM3/portmacro.h
+track_car\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+track_car\list.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
