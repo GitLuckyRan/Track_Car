@@ -8,7 +8,7 @@
 
 int16_t BiasValue = 0;
 int16_t BiasDirection = 0;   //0-停止 1-右转 2-左转 3-前进
-uint8_t LineValue;
+volatile uint8_t LineValue;
 uint16_t Count = 0;
 
 void Task_Init(void)
@@ -125,17 +125,16 @@ void Task_Run(void)
     //检测前方是否由物体
     Length = GetLength();
     //控制其运行 
-    Control_Direction();
-    
+    Control_Direction();   
 }
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
     
-  if (htim->Instance == TIM3)
-  {
-      Task_Run();
-  }
+//  if (htim->Instance == TIM3)
+//  {
+//      Task_Run();
+//  }
   if (htim->Instance == TIM4)
   {
        msCount++;

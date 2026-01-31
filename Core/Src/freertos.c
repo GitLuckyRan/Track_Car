@@ -25,7 +25,8 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "bsp_redCheck.h"
+#include "task_tracking.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -46,7 +47,6 @@
 /* Private variables ---------------------------------------------------------*/
 /* USER CODE BEGIN Variables */
 
-
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
 osThreadId_t defaultTaskHandle;
@@ -56,12 +56,31 @@ const osThreadAttr_t defaultTask_attributes = {
   .priority = (osPriority_t) osPriorityNormal,
 };
 
-void fun()
-{}
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
+//void vGetLineValue(void *argument)
+//{
+//    for(;;)
+//    {
+//       LineValue = GetRedSensorData();
+//       osDelay(10);       
+//    }
+//    vTaskDelete(NULL);
 
+//}
+
+void vStartRun(void *argument)
+{
+    uint32_t tick = osKernelGetTickCount(); // 获取当前系统滴答值
+    for(;;)
+    {
+       tick += 50;
+       Task_Run();
+       osDelayUntil(tick);                                                                                   
+    }
+    vTaskDelete(NULL);
+}                                                               
 /* USER CODE END FunctionPrototypes */
 
 void StartDefaultTask(void *argument);
@@ -100,7 +119,8 @@ void MX_FREERTOS_Init(void) {
   
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
-  
+//  xTaskCreate(vGetLineValue,"GetLine",100,NULL,3,NULL);
+  xTaskCreate(vStartRun,"StartRun",100,NULL,4,NULL);
   
   /* USER CODE END RTOS_THREADS */
 
