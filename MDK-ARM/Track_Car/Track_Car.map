@@ -107,7 +107,7 @@ Section Cross References
     task_tracking.o(i.Task_Init) refers to bsp_pwm.o(i.StartPWM) for StartPWM
     task_tracking.o(i.Task_Init) refers to bsp_motor.o(i.Car_Forward) for Car_Forward
     task_tracking.o(i.Task_Init) refers to stm32f1xx_hal_tim.o(i.HAL_TIM_Base_Start_IT) for HAL_TIM_Base_Start_IT
-    task_tracking.o(i.Task_Init) refers to tim.o(.bss) for htim3
+    task_tracking.o(i.Task_Init) refers to tim.o(.bss) for htim4
     task_tracking.o(i.Task_Run) refers to bsp_redcheck.o(i.GetRedSensorData) for GetRedSensorData
     task_tracking.o(i.Task_Run) refers to task_tracking.o(i.SelectDirection) for SelectDirection
     task_tracking.o(i.Task_Run) refers to bsp_ultrasound.o(i.GetLength) for GetLength

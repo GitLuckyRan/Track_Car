@@ -150,6 +150,22 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
+          <LineNumber>128</LineNumber>
+          <EnabledFlag>1</EnabledFlag>
+          <Address>134224660</Address>
+          <ByteObject>0</ByteObject>
+          <HtxType>0</HtxType>
+          <ManyObjects>0</ManyObjects>
+          <SizeOfObject>0</SizeOfObject>
+          <BreakByAccess>0</BreakByAccess>
+          <BreakIfRCount>1</BreakIfRCount>
+          <Filename>..\Application\Task\task_tracking.c</Filename>
+          <ExecCommand></ExecCommand>
+          <Expression>\\Track_Car\../Application/Task/task_tracking.c\128</Expression>
+        </Bp>
+        <Bp>
+          <Number>1</Number>
+          <Type>0</Type>
           <LineNumber>123</LineNumber>
           <EnabledFlag>1</EnabledFlag>
           <Address>134223142</Address>
@@ -164,11 +180,11 @@
           <Expression>\\Track_Car\../Core/Src/freertos.c\123</Expression>
         </Bp>
         <Bp>
-          <Number>1</Number>
+          <Number>2</Number>
           <Type>0</Type>
           <LineNumber>99</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134224904</Address>
+          <Address>134224892</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -180,7 +196,7 @@
           <Expression>\\Track_Car\../Core/Src/main.c\99</Expression>
         </Bp>
         <Bp>
-          <Number>2</Number>
+          <Number>3</Number>
           <Type>0</Type>
           <LineNumber>69</LineNumber>
           <EnabledFlag>1</EnabledFlag>
@@ -196,11 +212,11 @@
           <Expression>\\Track_Car\../Drivers/BSP/Src/bsp_ultraSound.c\69</Expression>
         </Bp>
         <Bp>
-          <Number>3</Number>
+          <Number>4</Number>
           <Type>0</Type>
           <LineNumber>79</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134228060</Address>
+          <Address>134228048</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>

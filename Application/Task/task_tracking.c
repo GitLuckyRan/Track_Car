@@ -15,8 +15,8 @@ void Task_Init(void)
 {
     StartPWM();
     Car_Forward(500);
-    HAL_TIM_Base_Start_IT(&htim3);
-//    HAL_TIM_Base_Start_IT(&htim4);
+//    HAL_TIM_Base_Start_IT(&htim3);
+    HAL_TIM_Base_Start_IT(&htim4);
 }
 
 void getBias(int16_t right, int16_t left)
@@ -89,7 +89,7 @@ void SelectDirection(void)
     left = temp & 0x0F;
     getBias(right,left);  
 }
-int16_t BASE_SPEED = 500;
+int16_t BASE_SPEED = 600;
 //0-停止 1-右转 2-左转 3-前进
 void Control_Direction(void)
 {
