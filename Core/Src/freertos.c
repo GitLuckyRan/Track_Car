@@ -72,7 +72,7 @@
 
 void vStartRun(void *argument)
 {
-    uint32_t tick = osKernelGetTickCount(); // ��ȡ��ǰϵͳ�δ�ֵ
+    uint32_t tick = osKernelGetTickCount(); // 获取系统内部时间戳
     for(;;)
     {
        tick += 50;

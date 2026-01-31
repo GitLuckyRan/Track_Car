@@ -6,8 +6,8 @@
 #include "bsp_redCheck.h"
 #include "tim.h"
 int16_t BiasValue = 0;
-int16_t BiasDirection = 0;   //0-ֹͣ 1-��ת 2-��ת 3-ǰ��
-int16_t LastDirection = 0;   //0-ֹͣ 1-��ת 2-��ת 3-ǰ��
+int16_t BiasDirection = 0;   //方向设置
+int16_t LastDirection = 0;   //上一次方向
 volatile uint8_t LineValue;
 uint16_t Count = 0;
 
@@ -49,7 +49,7 @@ void getBias(int16_t right, int16_t left)
     }
     else
     {
-        if (LineValue == 0xFF )    //û�м�⵽���ߣ���ֹ�����Ӵ�������ԭ�򣬼�������0.5s��ֹͣ����,
+        if (LineValue == 0xFF )    //检测是否越界,Count防止断连
         {
             Count += 1 ;
             if (Count > 10)
@@ -91,7 +91,7 @@ void SelectDirection(void)
 }
 int16_t BASE_SPEED = 500;
 
-//0-ֹͣ 1-��ת 2-��ת 3-ǰ��
+//控制轮子转速
 void Control_Direction(void)
 {
     int16_t speed = PID(BiasValue);
@@ -115,7 +115,7 @@ void Control_Direction(void)
     {
         if (LastDirection == 0)
         {
-           Car_Forward(1000);  //��ͣ�󣬳�����Ħ��������ֹ�����ת
+           Car_Forward(1000);  //暂停后第一次启动，超过静摩擦力
         }else
         {
            Car_Forward(BASE_SPEED);
@@ -127,12 +127,16 @@ void Control_Direction(void)
 
 void Task_Run(void)
 {
+    //获取红外传感器值
     LineValue = GetRedSensorData(); 
-    //��ȡƫת���򼰴�С
-    SelectDirection();
-    //���ǰ���Ƿ�������
+    
+    //获取红外传感器值
     Length = GetLength();
-    //���������� 
+    
+    //设置BiaDirection方向值
+    SelectDirection();
+    
+    //控制转轮转速
     Control_Direction();   
 }
 
