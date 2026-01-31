@@ -49,12 +49,12 @@
 
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
-osThreadId_t defaultTaskHandle;
-const osThreadAttr_t defaultTask_attributes = {
-  .name = "defaultTask",
-  .stack_size = 128 * 4,
-  .priority = (osPriority_t) osPriorityNormal,
-};
+//osThreadId_t defaultTaskHandle;
+//const osThreadAttr_t defaultTask_attributes = {
+//  .name = "defaultTask",
+//  .stack_size = 128 * 4,
+//  .priority = (osPriority_t) osPriorityNormal,
+//};
 
 
 /* Private function prototypes -----------------------------------------------*/
@@ -115,12 +115,12 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* creation of defaultTask */
-  defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+ // defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
   
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
 //  xTaskCreate(vGetLineValue,"GetLine",100,NULL,3,NULL);
-  xTaskCreate(vStartRun,"StartRun",100,NULL,2,NULL);
+  xTaskCreate(vStartRun,"StartRun",200,NULL,2,NULL);
   
   /* USER CODE END RTOS_THREADS */
 

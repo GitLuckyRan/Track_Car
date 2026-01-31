@@ -5,9 +5,9 @@
 #include "car_pid.h"
 #include "bsp_redCheck.h"
 #include "tim.h"
-
 int16_t BiasValue = 0;
-int16_t BiasDirection = 0;   //0-Í£Ö¹ 1-ÓÒ×ª 2-×ó×ª 3-Ç°½ø
+int16_t BiasDirection = 0;   //0-Í£Ö¹ 1-ï¿½ï¿½×ª 2-ï¿½ï¿½×ª 3-Ç°ï¿½ï¿½
+int16_t LastDirection = 0;   //0-Í£Ö¹ 1-ï¿½ï¿½×ª 2-ï¿½ï¿½×ª 3-Ç°ï¿½ï¿½
 volatile uint8_t LineValue;
 uint16_t Count = 0;
 
@@ -49,8 +49,7 @@ void getBias(int16_t right, int16_t left)
     }
     else
     {
-        
-        if (LineValue == 0xFF )    //Ã»ÓÐ¼ì²âµ½ºÚÏß£¬·ÀÖ¹¶ÏÁ¬½Ó´¥²»Á¼µÈÔ­Òò£¬¼ÌÐøÔËÐÐ0.5sºó£¬Í£Ö¹ÔËÐÐ,
+        if (LineValue == 0xFF )    //Ã»ï¿½Ð¼ï¿½âµ½ï¿½ï¿½ï¿½ß£ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½Ó´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô­ï¿½ò£¬¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½0.5sï¿½ï¿½Í£Ö¹ï¿½ï¿½ï¿½ï¿½,
         {
             Count += 1 ;
             if (Count > 10)
@@ -73,6 +72,7 @@ void getBias(int16_t right, int16_t left)
     {
         BiasDirection = 0;
     }
+ 
       
 }
 
@@ -89,8 +89,9 @@ void SelectDirection(void)
     left = temp & 0x0F;
     getBias(right,left);  
 }
-int16_t BASE_SPEED = 600;
-//0-Í£Ö¹ 1-ÓÒ×ª 2-×ó×ª 3-Ç°½ø
+int16_t BASE_SPEED = 500;
+
+//0-Í£Ö¹ 1-ï¿½ï¿½×ª 2-ï¿½ï¿½×ª 3-Ç°ï¿½ï¿½
 void Control_Direction(void)
 {
     int16_t speed = PID(BiasValue);
@@ -100,11 +101,11 @@ void Control_Direction(void)
    
     if (BiasDirection == 1) 
     {
-        Car_SetSpeed(BASE_SPEED + speed ,BASE_SPEED - 100);           
+        Car_SetSpeed(BASE_SPEED + speed ,BASE_SPEED - speed);           
     }
     else if (BiasDirection == 2)
     {
-        Car_SetSpeed(BASE_SPEED - 100 ,BASE_SPEED + speed);
+        Car_SetSpeed(BASE_SPEED - speed ,BASE_SPEED + speed);
     }
     else if (BiasDirection == 0 )
     {
@@ -112,19 +113,26 @@ void Control_Direction(void)
     }
     else
     {
-        Car_Forward(BASE_SPEED);
+        if (LastDirection == 0)
+        {
+           Car_Forward(1000);  //ï¿½ï¿½Í£ï¿½ó£¬³ï¿½ï¿½ï¿½ï¿½ï¿½Ä¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¹ï¿½ï¿½ï¿½ï¿½ï¿½×ª
+        }else
+        {
+           Car_Forward(BASE_SPEED);
+        }     
     }
+    LastDirection = BiasDirection;
 
 }
 
 void Task_Run(void)
 {
     LineValue = GetRedSensorData(); 
-    //»ñÈ¡Æ«×ª·½Ïò¼°´óÐ¡
+    //ï¿½ï¿½È¡Æ«×ªï¿½ï¿½ï¿½ò¼°´ï¿½Ð¡
     SelectDirection();
-    //¼ì²âÇ°·½ÊÇ·ñÓÉÎïÌå
+    //ï¿½ï¿½ï¿½Ç°ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     Length = GetLength();
-    //¿ØÖÆÆäÔËÐÐ 
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
     Control_Direction();   
 }
 

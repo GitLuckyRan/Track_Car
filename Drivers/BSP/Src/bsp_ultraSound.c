@@ -53,14 +53,33 @@ float GetLength(void)
     float length = 0;
     float sum = 0;
     float max_val=0,min_val=100;
+    uint16_t timeout = 0;
     for(int i = 0; i<1; i++)
     {
         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_SET);
         HAL_Delay_us(20);
         HAL_GPIO_WritePin(GPIOB, GPIO_PIN_1, GPIO_PIN_RESET);
-        while (HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_10) == 0);
+        while (HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_10) == 0)
+        {
+            timeout +=1;
+            if(timeout > 20000)
+            {
+                break;
+            }
+        
+        };
         OpenTimerForHc(); 
-        while (HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_10) == 1);        
+        timeout = 0;
+        while (HAL_GPIO_ReadPin(GPIOB,GPIO_PIN_10) == 1)
+        {
+             timeout +=1;
+            if(timeout > 20000)
+            {
+                break;
+            }
+        
+        }
+                 
         CloseTimerForHc();
         t = GetEchoTimer();
         length = ((float)t/58.0);
