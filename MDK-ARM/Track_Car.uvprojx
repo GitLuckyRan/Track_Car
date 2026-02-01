@@ -485,6 +485,11 @@
               <FileType>5</FileType>
               <FilePath>..\Drivers\BSP\Inc\bsp_ultraSound.h</FilePath>
             </File>
+            <File>
+              <FileName>remote_ir.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\Drivers\BSP\Inc\remote_ir.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -509,6 +514,11 @@
               <FileName>bsp_ultraSound.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\Drivers\BSP\Src\bsp_ultraSound.c</FilePath>
+            </File>
+            <File>
+              <FileName>remote_ir.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\BSP\Src\remote_ir.c</FilePath>
             </File>
           </Files>
         </Group>

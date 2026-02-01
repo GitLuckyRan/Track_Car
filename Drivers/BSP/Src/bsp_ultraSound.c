@@ -29,19 +29,17 @@ void HAL_Delay_us(uint32_t us)
 {
     uint32_t ticks = 0;
     uint32_t told = 0, tnow = 0, tcnt = 0;
-    uint32_t reload = SysTick->LOAD;  // 获取SysTick重装载值
-    ticks = us * (SystemCoreClock / 1000000);  // 计算20us对应的时钟节拍数
-    told = SysTick->VAL;  // 获取当前SysTick计数值
+    uint32_t reload = SysTick->LOAD; 
+    ticks = us * (SystemCoreClock / 1000000);  
+    told = SysTick->VAL;  
     while(1)
     {
         tnow = SysTick->VAL;
         if(tnow != told)
         {
-            // 处理SysTick向下计数的溢出情况
             if(tnow < told) tcnt += told - tnow;
             else tcnt += reload - tnow + told;
             told = tnow;
-            // 计数达到目标节拍数，退出延时
             if(tcnt >= ticks) break;
         }
     }

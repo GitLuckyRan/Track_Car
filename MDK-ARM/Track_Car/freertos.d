@@ -40,3 +40,5 @@ track_car\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/c
 track_car\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
 track_car\freertos.o: ../Drivers/BSP/Inc/bsp_redCheck.h
 track_car\freertos.o: ../Application/Task/task_tracking.h
+track_car\freertos.o: ../Drivers/BSP/Inc/remote_ir.h
+track_car\freertos.o: ../Drivers/BSP/Inc/bsp_motor.h

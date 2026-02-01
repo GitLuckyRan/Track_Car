@@ -27,6 +27,8 @@
 /* USER CODE BEGIN Includes */
 #include "bsp_redCheck.h"
 #include "task_tracking.h"
+#include "remote_ir.h"
+#include "bsp_motor.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -49,13 +51,12 @@
 
 /* USER CODE END Variables */
 /* Definitions for defaultTask */
-//osThreadId_t defaultTaskHandle;
-//const osThreadAttr_t defaultTask_attributes = {
-//  .name = "defaultTask",
-//  .stack_size = 128 * 4,
-//  .priority = (osPriority_t) osPriorityNormal,
-//};
-
+osThreadId_t defaultTaskHandle;
+const osThreadAttr_t defaultTask_attributes = {
+  .name = "defaultTask",
+  .stack_size = 128 * 4,
+  .priority = (osPriority_t) osPriorityNormal,
+};
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
@@ -72,11 +73,22 @@
 
 void vStartRun(void *argument)
 {
+    
     uint32_t tick = osKernelGetTickCount(); // 获取系统内部时间戳
     for(;;)
     {
+       uint8_t code;
        tick += 50;
-       Task_Run();
+//       Task_Run();
+       code = IR_code;
+        if(IR_code == 0xFF)
+        {
+         Car_SetSpeed(0,0);
+        }
+        else
+        {
+         Car_SetSpeed(500,500); 
+        }
        osDelayUntil(tick);                                                                                   
     }
     vTaskDelete(NULL);
@@ -115,12 +127,12 @@ void MX_FREERTOS_Init(void) {
 
   /* Create the thread(s) */
   /* creation of defaultTask */
- // defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
-  
+  defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
 //  xTaskCreate(vGetLineValue,"GetLine",100,NULL,3,NULL);
-  xTaskCreate(vStartRun,"StartRun",200,NULL,2,NULL);
+  xTaskCreate(vStartRun,"StartRun",500,NULL,2,NULL);
   
   /* USER CODE END RTOS_THREADS */
 

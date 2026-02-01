@@ -140,17 +140,18 @@ void Task_Run(void)
     Control_Direction();   
 }
 
-void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
-{
-    
-//  if (htim->Instance == TIM3)
+//void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+//{
+//    
+////  if (htim->Instance == TIM3)
+////  {
+////      Task_Run();
+////  }
+//    
+//  if (htim->Instance == TIM4)
 //  {
-//      Task_Run();
+//       msCount++;
 //  }
-  if (htim->Instance == TIM4)
-  {
-       msCount++;
-  }
-  
-}
+//  
+//}
 
