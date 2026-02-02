@@ -98,7 +98,9 @@ int main(void)
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
   Task_Init();
- 
+  // 1. 开启输入捕获中断 (用于记录脉宽)
+  HAL_TIM_IC_Start_IT(&htim3, TIM_CHANNEL_2);
+  HAL_TIM_Base_Start_IT(&htim3);
   /* USER CODE END 2 */
 
   /* Init scheduler */

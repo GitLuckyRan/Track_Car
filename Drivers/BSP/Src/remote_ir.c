@@ -7,7 +7,7 @@ uint8_t ir_flag = 0;
 #define STARTFLAG1 0x00
 #define STARTFLAG2 0xFF
 #include "bsp_ultraSound.h"
-uint8_t IR_code = 0xFF;
+volatile uint8_t IR_code = 0xFF;
 
 uint8_t IR_key[RCKeyNum] ="123456789*0#+LOR-";
 //按键及其对应的波形  (引导码) 地址码 地址码取反  数据 数据取反
@@ -52,7 +52,14 @@ void HAL_TIM_IC_CaptureCallback(TIM_HandleTypeDef *htim)
     {
         if(ir_flag == 0)
         {
-            ir_buff[ir_count++] = IR_TIM->CCR2;    //获取该次标志持续时长
+            if (ir_count < 1024)
+            {
+                ir_buff[ir_count++] = IR_TIM->CCR2;    //获取该次标志持续时长 
+            }
+            else{
+                ir_count = 0;
+            
+            }
             __HAL_TIM_SET_COUNTER(&htim3,0);
             IR_TIM->CCER ^= (1<<5);             //通道二 极性翻转
         

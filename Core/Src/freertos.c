@@ -80,18 +80,32 @@ void vStartRun(void *argument)
        uint8_t code;
        tick += 50;
 //       Task_Run();
-       code = IR_code;
+       
         if(IR_code == 0xFF)
         {
          Car_SetSpeed(0,0);
         }
-        else
+        else if (IR_code == 0x31)
         {
-         Car_SetSpeed(500,500); 
+         Car_SetSpeed(800,800); 
         }
+        else if (IR_code == 0x32)
+        {
+          Car_SetSpeed(-800,-800); 
+        }else if (IR_code == 0x33)
+        {
+          Car_SetSpeed(800,0);
+        }else if (IR_code == 0x34)
+        {
+          Car_SetSpeed(0,800);
+        }else
+        {
+          Car_SetSpeed(0,0);
+        }
+       code = IR_code;
        osDelayUntil(tick);                                                                                   
     }
-    vTaskDelete(NULL);
+//    vTaskDelete(NULL);
 }                                                               
 /* USER CODE END FunctionPrototypes */
 

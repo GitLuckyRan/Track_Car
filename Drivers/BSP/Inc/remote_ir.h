@@ -12,7 +12,7 @@ typedef struct{
     uint8_t Ir_Data[MAX_DATALEN];
     uint16_t Ir_Length;
 }IR_DATA_TypeDef;
-extern uint8_t IR_code;
+extern volatile uint8_t IR_code;
 
 //extern uint8_t IR_key[RCKeyNum];
 ////按键及其对应的波形  (引导码) 地址码 地址码取反  数据 数据取反
