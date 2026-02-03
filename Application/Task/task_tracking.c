@@ -14,7 +14,7 @@ uint16_t Count = 0;
 void Task_Init(void)
 {
     StartPWM();
-    Car_Forward(500);
+    Car_Forward(0);
 //    HAL_TIM_Base_Start_IT(&htim3);
     HAL_TIM_Base_Start_IT(&htim4);
 }

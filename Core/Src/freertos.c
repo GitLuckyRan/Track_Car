@@ -29,6 +29,7 @@
 #include "task_tracking.h"
 #include "remote_ir.h"
 #include "bsp_motor.h"
+#include "power_model.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -71,6 +72,8 @@ const osThreadAttr_t defaultTask_attributes = {
 
 //}
 
+
+
 void vStartRun(void *argument)
 {
     
@@ -87,7 +90,9 @@ void vStartRun(void *argument)
         }
         else if (IR_code == 0x31)
         {
-         Car_SetSpeed(800,800); 
+            Stop_Mode(); 
+//           Car_SetSpeed(800,800); 
+//         Standby_Mode();
         }
         else if (IR_code == 0x32)
         {
@@ -146,7 +151,7 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
 //  xTaskCreate(vGetLineValue,"GetLine",100,NULL,3,NULL);
-  xTaskCreate(vStartRun,"StartRun",500,NULL,2,NULL);
+  xTaskCreate(vStartRun,"StartRun",600,NULL,2,NULL);
   
   /* USER CODE END RTOS_THREADS */
 

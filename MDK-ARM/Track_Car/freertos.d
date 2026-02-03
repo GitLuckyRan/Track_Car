@@ -42,3 +42,4 @@ track_car\freertos.o: ../Drivers/BSP/Inc/bsp_redCheck.h
 track_car\freertos.o: ../Application/Task/task_tracking.h
 track_car\freertos.o: ../Drivers/BSP/Inc/remote_ir.h
 track_car\freertos.o: ../Drivers/BSP/Inc/bsp_motor.h
+track_car\freertos.o: ../Application/Control/power_model.h

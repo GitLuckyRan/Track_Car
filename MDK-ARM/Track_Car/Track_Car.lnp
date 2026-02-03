@@ -11,6 +11,7 @@
 "track_car\bsp_ultrasound.o"
 "track_car\remote_ir.o"
 "track_car\car_pid.o"
+"track_car\power_model.o"
 "track_car\task_tracking.o"
 "track_car\croutine.o"
 "track_car\event_groups.o"
