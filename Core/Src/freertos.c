@@ -61,16 +61,6 @@ const osThreadAttr_t defaultTask_attributes = {
 
 /* Private function prototypes -----------------------------------------------*/
 /* USER CODE BEGIN FunctionPrototypes */
-//void vGetLineValue(void *argument)
-//{
-//    for(;;)
-//    {
-//       LineValue = GetRedSensorData();
-//       osDelay(10);       
-//    }
-//    vTaskDelete(NULL);
-
-//}
 
 
 
@@ -80,16 +70,20 @@ void vStartRun(void *argument)
     uint32_t tick = osKernelGetTickCount(); // 获取系统内部时间戳
     for(;;)
     {
-       uint8_t code;
+//       HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
+//       HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
        tick += 50;
 //       Task_Run();
        
         if(IR_code == 0xFF)
-        {
-         Car_SetSpeed(0,0);
+        { 
+
+            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
+//            Car_SetSpeed(0,0);
         }
         else if (IR_code == 0x31)
         {
+            osDelay(20);
             Stop_Mode(); 
 //           Car_SetSpeed(800,800); 
 //         Standby_Mode();
@@ -105,9 +99,15 @@ void vStartRun(void *argument)
           Car_SetSpeed(0,800);
         }else
         {
-          Car_SetSpeed(0,0);
+            
+            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
+            osDelay(5);
+            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
+            osDelay(5);
+            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
+            osDelay(5);
+            Car_SetSpeed(0,0);
         }
-       code = IR_code;
        osDelayUntil(tick);                                                                                   
     }
 //    vTaskDelete(NULL);
@@ -151,7 +151,7 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
 //  xTaskCreate(vGetLineValue,"GetLine",100,NULL,3,NULL);
-  xTaskCreate(vStartRun,"StartRun",600,NULL,2,NULL);
+  xTaskCreate(vStartRun,"StartRun",600,NULL,3,NULL);
   
   /* USER CODE END RTOS_THREADS */
 

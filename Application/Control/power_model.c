@@ -34,6 +34,9 @@ void Stop_Mode(void)
     HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_3); // 左电机
     HAL_TIM_PWM_Stop(&htim2, TIM_CHANNEL_4); // 右电机
     
+    // 2. 【关键修正】挂起滴答定时器，防止 SysTick 自动唤醒
+    HAL_SuspendTick();
+    
     HAL_TIM_IC_Stop_IT(&htim3, TIM_CHANNEL_2);
     //清除中断标志
     __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_8);
@@ -44,17 +47,26 @@ void Stop_Mode(void)
     //醒来恢复时钟
     SystemClock_Config();
     // 3.2 重启电机 PWM (此时占空比是 0，电机不会动，是安全的)
+    HAL_ResumeTick();
+    
+//    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
+//    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
+//    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
+//    HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
+
+    
     HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
     HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_4);
     
     HAL_TIM_IC_Start_IT(&htim3, TIM_CHANNEL_2);
     HAL_TIM_Base_Start_IT(&htim3);
+    Car_SetSpeed(800, 800); 
     
-    osKernelInitialize();  /* Call init function for freertos objects (in cmsis_os2.c) */
-    MX_FREERTOS_Init();
+//    osKernelInitialize();  /* Call init function for freertos objects (in cmsis_os2.c) */
+//    MX_FREERTOS_Init();
 //    xTaskCreate(vStartRun,"StartRun",600,NULL,2,NULL);
 
-  /* Start scheduler */
-    osKernelStart();
-    
+//  /* Start scheduler */
+//    osKernelStart();
+//    
 }
