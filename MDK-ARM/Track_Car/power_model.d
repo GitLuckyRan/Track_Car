@@ -40,3 +40,4 @@ track_car\power_model.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task
 track_car\power_model.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 track_car\power_model.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
 track_car\power_model.o: ../Drivers/BSP/Inc/bsp_motor.h
+track_car\power_model.o: ../Drivers/BSP/Inc/remote_ir.h

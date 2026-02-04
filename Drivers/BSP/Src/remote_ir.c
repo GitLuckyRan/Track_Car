@@ -182,3 +182,10 @@ error:
 	else	return 0;
 }
 
+// 开启红外遥控定时器中断
+void StartRemote_IR(void)
+{
+    HAL_TIM_IC_Start_IT(&htim3, TIM_CHANNEL_2);
+    HAL_TIM_Base_Start_IT(&htim3);
+}
+

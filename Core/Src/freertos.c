@@ -70,23 +70,20 @@ void vStartRun(void *argument)
     uint32_t tick = osKernelGetTickCount(); // 获取系统内部时间戳
     for(;;)
     {
-//       HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
-//       HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
+
        tick += 50;
 //       Task_Run();
        
         if(IR_code == 0xFF)
         { 
-
-            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
-//            Car_SetSpeed(0,0);
+            Car_SetSpeed(0,0);
         }
         else if (IR_code == 0x31)
         {
+            //防止进入后立刻唤醒
             osDelay(20);
             Stop_Mode(); 
-//           Car_SetSpeed(800,800); 
-//         Standby_Mode();
+
         }
         else if (IR_code == 0x32)
         {
@@ -98,13 +95,10 @@ void vStartRun(void *argument)
         {
           Car_SetSpeed(0,800);
         }else
-        {
-            
+        { 
             HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
             osDelay(5);
             HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
-            osDelay(5);
-            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
             osDelay(5);
             Car_SetSpeed(0,0);
         }

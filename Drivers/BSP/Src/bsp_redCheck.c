@@ -5,10 +5,8 @@ uint8_t GetRedSensorData(void)
 {
     uint8_t res = 0x00;
     uint16_t out_GPIOB = 0x0000;
-//    out_GPIOB = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_All);
     out_GPIOB = GPIOB->IDR;
     uint16_t out_GPIOA = 0x0000;
-//    out_GPIOA = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_All);
     out_GPIOA = GPIOA->IDR;
     for(int i = 12 ;i<16;i++)
     {
