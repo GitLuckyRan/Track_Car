@@ -11,3 +11,4 @@ void StopPWM(void)
     HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_3);
     HAL_TIM_PWM_Stop(&htim2,TIM_CHANNEL_4);
 }
+

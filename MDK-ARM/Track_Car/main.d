@@ -24,7 +24,10 @@ track_car\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dma_ex.h
 track_car\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
 track_car\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 track_car\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
+track_car\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_iwdg.h
 track_car\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+track_car\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc.h
+track_car\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc_ex.h
 track_car\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 track_car\main.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 track_car\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os.h
@@ -38,8 +41,11 @@ track_car\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrapper
 track_car\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
 track_car\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
 track_car\main.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h
+track_car\main.o: ../Core/Inc/iwdg.h
+track_car\main.o: ../Core/Inc/rtc.h
 track_car\main.o: ../Core/Inc/tim.h
 track_car\main.o: ../Core/Inc/gpio.h
 track_car\main.o: ../Application/Task/task_tracking.h
 track_car\main.o: ../Drivers/BSP/Inc/bsp_motor.h
 track_car\main.o: ../Drivers/BSP/Inc/bsp_ultraSound.h
+track_car\main.o: ../Application/Control/power_model.h

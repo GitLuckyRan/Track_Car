@@ -23,7 +23,10 @@ track_car\bsp_ultrasound.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_dm
 track_car\bsp_ultrasound.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_cortex.h
 track_car\bsp_ultrasound.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash.h
 track_car\bsp_ultrasound.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_flash_ex.h
+track_car\bsp_ultrasound.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_iwdg.h
 track_car\bsp_ultrasound.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h
+track_car\bsp_ultrasound.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc.h
+track_car\bsp_ultrasound.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rtc_ex.h
 track_car\bsp_ultrasound.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h
 track_car\bsp_ultrasound.o: ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h
 track_car\bsp_ultrasound.o: ../Core/Inc/tim.h

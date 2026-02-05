@@ -1,24 +1,28 @@
 #include "stm32f1xx_hal.h"
 #include "main.h"
 #include "tim.h"
-#include "task.h"
+
 #include "bsp_motor.h"
 #include "remote_ir.h"
 #include "bsp_pwm.h"
+#include "rtc.h"
 void Standby_Mode(void)
 {
     //开启电源时钟，操作PWR寄存器 SET_BIT(RCC->APB1ENR, RCC_APB1ENR_PWREN)
     __HAL_RCC_PWR_CLK_ENABLE();
     
     //设置wakeup引脚
-    HAL_PWR_EnableWakeUpPin(PWR_WAKEUP_PIN1);
+//    HAL_PWR_EnableWakeUpPin(PWR_WAKEUP_PIN1);
     
     //清除之前唤醒标志
     __HAL_PWR_CLEAR_FLAG(PWR_FLAG_WU);
     
-    //清楚待机标志
+    //清除待机标志
     __HAL_PWR_CLEAR_FLAG(PWR_FLAG_SB);
     
+    
+    //
+    RTC_SetAlarm_Relative(50);
     //进入待机模式
     HAL_PWR_EnterSTANDBYMode();
     

@@ -30,6 +30,7 @@
 #include "remote_ir.h"
 #include "bsp_motor.h"
 #include "power_model.h"
+#include "iwdg.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -96,15 +97,17 @@ void vStartRun(void *argument)
           Car_SetSpeed(0,800);
         }else
         { 
-            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
-            osDelay(5);
-            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
-            osDelay(5);
+//            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);
+//            osDelay(5);
+//            HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_RESET);
+//            osDelay(5);
             Car_SetSpeed(0,0);
         }
-       osDelayUntil(tick);                                                                                   
+        
+//       HAL_IWDG_Refresh(&hiwdg);
+       osDelayUntil(tick);
+   
     }
-//    vTaskDelete(NULL);
 }                                                               
 /* USER CODE END FunctionPrototypes */
 
