@@ -10,17 +10,31 @@
 
 ### 🎬 视频演示
 
-<!-- 将视频文件放入项目后替换下方路径 -->
+<div align="center">
+  <table>
+    <tr>
+    <td colspan="2" align="center">
+        <video src="
+https://github.com/user-attachments/assets/5674fc4e-0a40-4727-a7a3-d156e0676dcb" width="800" controls></video>
+      </td>
+    <td colspan="2" align="center">
+        <video src="https://github.com/user-attachments/assets/7707b180-8400-42cd-bd99-8556921a5819" width="800" controls></video>
+      </td>
+      <td align="center">
+        <img src="docs/car_photo.jpg" width="400"><br><b>实物图</b>
+      </td>
+    </tr>
+  </table>
+</div>
 
 **循迹模式演示**
 
 
-https://github.com/user-attachments/assets/5674fc4e-0a40-4727-a7a3-d156e0676dcb
 
 
 **避障/遥控模式演示**
 
-https://github.com/user-attachments/assets/7707b180-8400-42cd-bd99-8556921a5819
+
 
 ### 📷 实物图
 
