@@ -6,30 +6,30 @@
 
 ---
 
-## 演示
 
-### 🎬 视频演示
+
+## 演示
 
 <div align="center">
   <table>
     <tr>
-    <td colspan="2" align="center">
-        <video src="
-https://github.com/user-attachments/assets/5674fc4e-0a40-4727-a7a3-d156e0676dcb" width="800" controls></video>
+      <td align="center">
+        <video src="https://github.com/user-attachments/assets/5674fc4e-0a40-4727-a7a3-d156e0676dcb" width="400" controls></video>
+        <br><b>循迹模式演示</b>
       </td>
-      <br><b>**循迹模式演示**</b>
-    <td colspan="2" align="center">
-        <video src="https://github.com/user-attachments/assets/7707b180-8400-42cd-bd99-8556921a5819" width="800" controls></video>
+      <td align="center">
+        <video src="https://github.com/user-attachments/assets/7707b180-8400-42cd-bd99-8556921a5819" width="400" controls></video>
+        <br><b>避障/遥控模式演示</b>
       </td>
-      <br><b>**避障/遥控模式演示**</b>
-
     </tr>
-          <td align="center">
-        <img src="docs/car_photo.jpg" width="400"><br><b>### 📷 实物图</b>
+    <tr>
+      <td colspan="2" align="center">
+        <img src="docs/car_photo.jpg" width="400">
+        <br><b>📷 实物图</b>
       </td>
+    </tr>
   </table>
 </div>
-
 
 
 
@@ -42,7 +42,7 @@ https://github.com/user-attachments/assets/5674fc4e-0a40-4727-a7a3-d156e0676dcb"
 | 电机驱动 | L298N H桥，双路 PWM 调速（TIM2 CH3/CH4，1kHz） |
 | 循迹传感器 | 8路红外对管阵列（PA9-PA12 + PB12-PB15） |
 | 测距传感器 | HC-SR04 超声波模块（TIM4 计时） |
-| 遥控接收 | VS1838B 红外接收头（TIM3 输入捕获，NEC 协议） |
+| 遥控接收 | VS1838B 红外接收头（TIM3 输入捕获） |
 | 电源管理 | RTC 闹钟唤醒待机 / EXTI 中断唤醒停止模式 |
 
 ---
