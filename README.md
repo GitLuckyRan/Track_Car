@@ -22,10 +22,11 @@ https://github.com/user-attachments/assets/5674fc4e-0a40-4727-a7a3-d156e0676dcb"
         <video src="https://github.com/user-attachments/assets/7707b180-8400-42cd-bd99-8556921a5819" width="800" controls></video>
       </td>
       <br><b>**避障/遥控模式演示**</b>
-      <td align="center">
+
+    </tr>
+          <td align="center">
         <img src="docs/car_photo.jpg" width="400"><br><b>### 📷 实物图</b>
       </td>
-    </tr>
   </table>
 </div>
 
