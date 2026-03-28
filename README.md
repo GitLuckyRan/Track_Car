@@ -14,16 +14,18 @@
 
 **循迹模式演示**
 
-https://github.com/user-attachments/assets/VIDEO_1_PLACEHOLDER
+
+https://github.com/user-attachments/assets/5674fc4e-0a40-4727-a7a3-d156e0676dcb
+
 
 **避障/遥控模式演示**
 
-https://github.com/user-attachments/assets/VIDEO_2_PLACEHOLDER
+https://github.com/user-attachments/assets/7707b180-8400-42cd-bd99-8556921a5819
 
 ### 📷 实物图
 
 <!-- 将图片文件放入项目后替换下方路径 -->
-![小车实物图](assets/IMAGE_PLACEHOLDER.jpg)
+![小车实物图](docs/car_photo.jpg)
 
 ---
 
