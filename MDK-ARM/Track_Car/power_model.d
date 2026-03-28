@@ -35,3 +35,4 @@ track_car\power_model.o: ../Drivers/BSP/Inc/bsp_motor.h
 track_car\power_model.o: ../Drivers/BSP/Inc/remote_ir.h
 track_car\power_model.o: ../Drivers/BSP/Inc/bsp_pwm.h
 track_car\power_model.o: ../Core/Inc/rtc.h
+track_car\power_model.o: ../Core/Inc/iwdg.h

@@ -36,3 +36,4 @@ track_car\task_tracking.o: ../Application/Control/car_pid.h
 track_car\task_tracking.o: ../Drivers/BSP/Inc/bsp_redCheck.h
 track_car\task_tracking.o: ../Core/Inc/tim.h
 track_car\task_tracking.o: ../Core/Inc/main.h
+track_car\task_tracking.o: ../Drivers/BSP/Inc/remote_ir.h

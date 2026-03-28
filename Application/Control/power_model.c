@@ -6,6 +6,10 @@
 #include "remote_ir.h"
 #include "bsp_pwm.h"
 #include "rtc.h"
+#include "iwdg.h"
+
+
+//待机模式
 void Standby_Mode(void)
 {
     //开启电源时钟，操作PWR寄存器 SET_BIT(RCC->APB1ENR, RCC_APB1ENR_PWREN)
@@ -20,7 +24,6 @@ void Standby_Mode(void)
     //清除待机标志
     __HAL_PWR_CLEAR_FLAG(PWR_FLAG_SB);
     
-    
     //
     RTC_SetAlarm_Relative(50);
     //进入待机模式
@@ -30,23 +33,21 @@ void Standby_Mode(void)
 
 
 //停止模式会维持原值不变！！！
-
 void Stop_Mode(void)
 {
     
-    // 1.1 刹车：将 PWM 占空比设为 0，防止意外转动
+    //  刹车：将 PWM 占空比设为 0，防止意外转动
     Car_SetSpeed(0, 0); 
     
-    // 1.2 停止 PWM 输出 
+    //  停止 PWM 输出 
     StopPWM();
     
-    // 2.挂起滴答定时器，防止SysTick自动唤醒
+    // 挂起滴答定时器，防止SysTick自动唤醒
     HAL_SuspendTick();
-    
     
     HAL_TIM_IC_Stop_IT(&htim3, TIM_CHANNEL_2);
     
-    //清除中断标志
+    //清除中断标志，防止一进入就唤醒
     __HAL_GPIO_EXTI_CLEAR_IT(GPIO_PIN_8);
     
     //进入停止模式
@@ -54,6 +55,7 @@ void Stop_Mode(void)
     
     //醒来恢复时钟
     SystemClock_Config();
+    
     // 3.2 重启电机 PWM (此时占空比是 0，电机不会动，是安全的)
     HAL_ResumeTick();
     
@@ -62,7 +64,7 @@ void Stop_Mode(void)
     
     //恢复PWM
     StartPWM();
-  
+    
     // 恢复红外遥控定时器中断
     StartRemote_IR();
 

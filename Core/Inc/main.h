@@ -59,7 +59,7 @@ void SystemClock_Config(void);
 /* Private defines -----------------------------------------------------------*/
 
 /* USER CODE BEGIN Private defines */
-
+#define  IWDG_IS_ON  1
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

@@ -4,7 +4,7 @@
 int MAXSPEED = 1000;
 
 void Control_Right_Motor(int speed)
-{
+{  
     if(speed > 0)
     {
         speed = (speed > MAXSPEED) ? MAXSPEED : speed;

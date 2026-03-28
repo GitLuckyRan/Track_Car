@@ -88,7 +88,7 @@ int Check_RemoteKey(uint8_t *buff)
     int res;
     if ((buff[0] != STARTFLAG1) || (buff[1] != STARTFLAG2))
     {
-        res = -1;
+        return -1;
     }
     for (i = 0; i < RCKeyNum; i++)
     {

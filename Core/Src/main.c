@@ -98,13 +98,13 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM4_Init();
   MX_TIM3_Init();
-//  MX_IWDG_Init();
+  if (IWDG_IS_ON)
+  {
+//      MX_IWDG_Init();
+  }
   MX_RTC_Init();
   /* USER CODE BEGIN 2 */
   Task_Init();
-  // 1. 开启输入捕获中断 (用于记录脉宽)
-  HAL_TIM_IC_Start_IT(&htim3, TIM_CHANNEL_2);
-  HAL_TIM_Base_Start_IT(&htim3);
   /* USER CODE END 2 */
 //  RTC_SetAlarm_Relative(10);
 //  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_0, GPIO_PIN_SET);

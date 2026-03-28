@@ -5,6 +5,8 @@
 #include "car_pid.h"
 #include "bsp_redCheck.h"
 #include "tim.h"
+#include "remote_ir.h"
+extern uint8_t AvoidMode;
 int16_t BiasValue = 0;
 int16_t BiasDirection = 0;   //方向设置
 int16_t LastDirection = 0;   //上一次方向
@@ -13,10 +15,13 @@ uint16_t Count = 0;
 
 void Task_Init(void)
 {
+    // 开启PWM TIM2
     StartPWM();
     Car_Forward(0);
-//    HAL_TIM_Base_Start_IT(&htim3);
+    // 开启超声波 TIM4
     HAL_TIM_Base_Start_IT(&htim4);
+    // 开启红外捕获  TIM3 CH2
+    StartRemote_IR();
 }
 
 void getBias(int16_t right, int16_t left)
@@ -68,7 +73,7 @@ void getBias(int16_t right, int16_t left)
         BiasValue = 0;
     }
     
-    if (Length < 10.0)
+    if (AvoidMode && Length < 10.0)
     {
         BiasDirection = 0;
     }
@@ -131,7 +136,7 @@ void Task_Run(void)
     LineValue = GetRedSensorData(); 
     
     //获取红外传感器值
-    Length = GetLength();
+//    Length = GetLength();
     
     //设置BiaDirection方向值
     SelectDirection();
